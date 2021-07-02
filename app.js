@@ -3,20 +3,16 @@ const app = express();
 
 app.use('/static', express.static('public'));
 
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/views/home.html');
+})
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, function(){
     console.log('Servidor funcionando en ' + PORT)
 })
 
-app.get('/', (req, res) => {
-    res.json({ success: true })
-})
-/*
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/views/home.html');
-})
-*/
 app.get('/register', (req, res) => {
     res.sendFile(__dirname + '/views/register.html');
 })
